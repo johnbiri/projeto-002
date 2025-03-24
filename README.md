@@ -1,6 +1,3 @@
-# CPLC - Blog
+projeto-002
 
-Vídeo aulas para aprender a desenvolver esse projeto:
-
-## https://youtu.be/tafq9Zfdgpk
-# projeto-002
+em desenvolvimento
