@@ -1,18 +1,27 @@
-<div class='card text-white mb-3' style='background-color: rgba(0, 0, 0, 0.8);'>
-  <div class='card-body'>
-    <h4><%= link_to post.title, post, class: 'text-white' %></h4>
+<div class="card text-white mb-3" style="background-color: rgba(0, 0, 0, 0.8);">
+  <div class="card-body">
+    <h4 class="card-title">
+      <%= link_to post.title, post, class: 'text-white text-decoration-none' %>
+    </h4>
 
-    <div class='text-secondary mb-2'>
+    <div class="text-secondary mb-2">
       <em>Por <%= post.author %> (<%= l post.created_at, format: :short %>)</em>
     </div>
 
-    <p><%= post.body.truncate(400) %></p>
+    <p class="card-text">
+      <%= post.body.truncate(400) %>
+    </p>
 
-    <p class='text-secondary'><%= pluralize(post.comments.count, 'Comentário') %></p>
+    <div class="d-flex justify-content-start mb-2">
+      <p class="text-secondary mb-0 mr-3"><%= pluralize(post.comments.count, 'Comentário') %></p>
+    </div>
 
-    <%= link_to 'Ler Artigo', post, class: 'btn btn-primary' %>
-    <%= link_to 'Editar', edit_post_path(post), class: 'btn btn-secondary' %>
-    <%= link_to 'Apagar', post, method: :delete, class: 'btn btn-danger',
-      data: { confirm: 'Você tem certeza?' } %>
+    <!-- Botões na linha abaixo -->
+    <div class="d-flex justify-content-start">
+      <%= link_to 'Ler Artigo', post, class: 'btn btn-primary mr-2' %>
+      <%= link_to 'Editar', edit_post_path(post), class: 'btn btn-secondary mr-2' %>
+      <%= link_to 'Apagar', post, method: :delete, class: 'btn btn-danger',
+        data: { confirm: 'Você tem certeza?' } %>
+    </div>
   </div>
 </div>

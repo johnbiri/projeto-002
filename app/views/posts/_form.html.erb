@@ -1,18 +1,20 @@
 <%= form_with model: post, local: true do |form| %>
   <div class="form-group text-white">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: 'form-control', style: "background-color: #000; color: white" %>
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control bg-transparent text-white', required: true, placeholder: 'Título do artigo' %>
   </div>
 
   <div class="form-group text-white">
-    <%= form.label :author %>
-    <%= form.text_field :author, class: 'form-control', style: "background-color: #000; color: white" %>
+    <%= form.label :author, class: 'form-label' %>
+    <%= form.text_field :author, class: 'form-control bg-transparent text-white', required: true, placeholder: 'Nome do autor' %>
   </div>
 
   <div class="form-group text-white">
-    <%= form.label :body %>
-    <%= form.text_area :body, class: 'form-control', rows: 15, style: "background-color: #000; color: white" %>
+    <%= form.label :body, class: 'form-label' %>
+    <%= form.text_area :body, class: 'form-control bg-transparent text-white', rows: 15, required: true, placeholder: 'Escreva seu artigo aqui...' %>
   </div>
 
-  <%= form.submit class: 'btn btn-primary', data: { disable_with: 'Criando...' } %>
+  <div class="form-group text-center">
+    <%= form.submit 'Salvar Post', class: 'btn btn-primary' %>
+  </div>
 <% end %>

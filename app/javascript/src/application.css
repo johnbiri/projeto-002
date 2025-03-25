@@ -1,62 +1,197 @@
-@import "bootstrap";
+@import 'bootstrap';
 
 body {
-    background-color: #000;
-    background-image: url('https://wallpaperaccess.com/full/42271.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh; /* Garante que o body ocupe a altura total da tela */
 }
 
-/* Customizando a barra de rolagem */
-body::-webkit-scrollbar {
-  width: 12px; /* Largura da barra de rolagem vertical */
-  height: 12px; /* Altura da barra de rolagem horizontal */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  margin: 0 auto;
 }
 
-/* Cor de fundo da barra de rolagem */
-body::-webkit-scrollbar-track {
-  background-color: transparent;
-  border-radius: 10px; /* Bordas arredondadas */
+.header {
+  text-align: center;
+  padding: 20px;
+  width: 100%;
 }
 
-/* Cor da parte "deslizante" da barra de rolagem */
-body::-webkit-scrollbar-thumb {
-  background: #500078; /* Cor do "thumb" (parte da barra que você arrasta) */
+.header h1 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin: 0;
+  text-transform: uppercase;
 }
 
-/* Cor do "thumb" quando está sendo clicado */
-body::-webkit-scrollbar-thumb:hover {
-  background: #a300c8; /* Cor ao passar o mouse */
+.navbar {
+  background-color: #333;
+  width: 100%;
 }
 
-.custom-001:focus, .custom-001:active {
-    outline: none;
-    box-shadow: none;
-    background-color: #f00;
+.navbar .navbar-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
 }
 
-.info-001 {
-    background-color: rgb(56, 143, 85, 0.7);
-    border-radius: 5px;
-    padding: 10px;
+.navbar .navbar-nav li {
+  padding: 10px;
 }
 
-.body-001 {
-    max-width: 1000px;
+.navbar .navbar-nav li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar .navbar-nav li a:hover {
+  color: #007bff; /* Adiciona um efeito de hover */
+}
+
+.main-content {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 50px; /* Adiciona espaço suficiente para o rodapé */
+}
+
+.footer {
+  background-color: #000;
+  color: #555;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  font-size: 1rem;
+  box-sizing: border-box; /* Garante que o padding não afete a largura total */
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .navbar .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar .navbar-nav li {
     width: 100%;
-    margin: 0 auto;
-  }
-  
-  @media (max-width: 768px) {
-    .body-001 {
-      width: 100%;
-    }
+    text-align: center;
   }
 
-  @media (max-width: 388px) {
-    .body-002 {
-      display: none;
-    }
+  .navbar .navbar-nav li a {
+    font-size: 1.2rem;
   }
+
+  .main-content {
+    padding: 15px;
+  }
+
+  .footer {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .navbar .navbar-nav li {
+    font-size: 1rem;
+    padding: 8px;
+  }
+
+  .footer {
+    font-size: 0.8rem;
+  }
+
+  .navbar .navbar-nav li a {
+    font-size: 1rem;
+  }
+}
+
+.form-label {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.form-control {
+  background-color: #000;
+  color: white;
+  border: 1px solid #333;  /* Ajuste a cor da borda conforme necessário */
+}
+
+.form-control:focus {
+  border-color: #007bff; /* Cor da borda ao focar no campo */
+  box-shadow: 0 0 0 0.25rem rgba(38, 143, 255, 0.5); /* Cor de foco */
+}
+
+/* Ajustes para os comentários e botões */
+.d-flex.justify-content-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.d-flex.justify-content-start .text-secondary {
+  margin-right: 15px; /* Espaçamento entre o número de comentários e os botões */
+}
+
+.d-flex.justify-content-start .btn-group {
+  margin-top: 10px; /* Espaçamento entre os botões e a linha dos comentários */
+}
+
+.d-flex.justify-content-start .btn {
+  margin-right: 10px; /* Espaço entre os botões */
+}
+
+/* Responsividade para botões */
+@media (max-width: 768px) {
+  .d-flex.justify-content-start {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .d-flex.justify-content-start .btn {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .d-flex.justify-content-start .btn {
+    font-size: 0.9rem;
+  }
+
+  /* Ajuste para os comentários */
+  .shadow-sm, .shadow {
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 8px;
+  }
+
+  /* Ajuste nos campos de input e text-area */
+  .form-control {
+    padding: 8px;
+  }
+
+  /* Ajuste no botão de envio */
+  .btn {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+}

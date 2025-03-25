@@ -1,57 +1,60 @@
 <!DOCTYPE html>
-<html lang='pt'>
+<html lang="pt">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ETH Blog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
   </head>
 
-  <body class='body-001'>
+  <body>
     <div class="body-002">
-      <div class='bg-transparent text-white text-center mb-4 p-4'>
-        <%= link_to root_path, class: 'text-white custom-001' do %>
-          <h1 class='display-4'>ETH</h1>
+      
+      <!-- Header -->
+      <header class="header">
+        <%= link_to root_path, class: 'text-white text-decoration-none' do %>
+          <h1 class="display-4">ETH</h1>
         <% end %>
+        <p class="lead">Olá, aqui você encontrará artigos de todos os tipos.</p>
+      </header>
 
-        <p class='lead'>Olá, aqui você encontrará artigos de todos os tipos.</p>
-      </div>
-
-      <div class='container-fluid min-vh-100'>
+      <!-- Flash Messages -->
+      <div class="container">
         <% flash.each do |type, message| %>
-          <div class='alert alert-<%= type == 'alert' ? 'danger' : 'success' %> alert-dismissible fade show' role='alert'>
+          <div class="alert alert-<%= type == 'alert' ? 'danger' : 'success' %> alert-dismissible fade show" role="alert">
             <%= message %>
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-              <span aria-hidden='true'>&times;</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
             </button>
           </div>
         <% end %>
-
-        <div class="mb-2">
-          <div class='search container-fluid pb-5'>
-            <%= form_with url: search_posts_path, method: :get, local: true, class: 'form-inline float-right' do |form| %>
-              <div class='form-group mx-3 mb-3'>
-                <%= form.search_field :q, class: 'form-control bg-transparent text-white', required: true,
-                  value: params[:q], autocomplete: "off" %>
-              </div>
-
-              <%= form.submit 'Buscar', class: 'btn btn-primary mb-3',
-                data: { disable_with: 'Buscar' } %>
-            <% end %>
-          </div>
-        </div>
-
-        
-
-
-        <%= yield %>
       </div>
 
-      <footer class='bg-transparent text-white text-center mt-5 p-4'>
+      <!-- Search Form -->
+      <div class="container">
+        <div class="search mb-5">
+          <%= form_with url: search_posts_path, method: :get, local: true, class: 'form-inline justify-content-center' do |form| %>
+            <div class="form-group mx-3 mb-3">
+              <%= form.search_field :q, class: 'form-control bg-transparent text-white', required: true, value: params[:q], autocomplete: "off", placeholder: "Buscar artigos..." %>
+            </div>
+            <%= form.submit 'Buscar', class: 'btn btn-primary mb-3', data: { disable_with: 'Buscar' } %>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Page Content -->
+      <div class="container">
+        <%= yield %> <!-- Here the page content will be rendered -->
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
         <h2>Copyright © JB <%= Date.current.year %>.</h2>
       </footer>
+
     </div>
   </body>
 </html>

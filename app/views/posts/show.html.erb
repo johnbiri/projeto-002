@@ -1,6 +1,6 @@
 <div class='shadow text-white p-2 rounded' style="background-color: rgba(0, 0, 0, 0.8);">
   <div class='text-center mb-5'>
-    <h1><%= @post.title %></h1>
+    <h1 class="text-uppercase"><%= @post.title %></h1>
 
     <p class='text-info'>
       <strong>Por <%= @post.author %></strong><br>
@@ -9,13 +9,12 @@
   </div>
 
   <div class='px-1'>
-    <%# ATENÇÃO: Sempre que usarmos \n (como na linha abaixo), precisamos usar áspas duplas %>
     <%= @post.body.gsub("\n", '<br>').html_safe %>
   </div>
 </div>
 
-<div class='m-5'>
-  <div class='text-center text-white p-5'>
+<div class='m-3'>
+  <div class='text-center text-white p-3'>
     <h4>
       <%= pluralize(@post.comments.count, 'Comentário') %>
 
@@ -25,18 +24,18 @@
     </h4>
   </div>
 
-  <div class='shadow-sm m-3 p-3 text-white rounded opacity-50' style='background-color: rgba(0, 0, 0, 0.8);'>
+  <div class='shadow-sm m-3 p-3 text-white rounded opacity-75' style='background-color: rgba(0, 0, 0, 0.8);'>
     <%= form_with model: @comment, local: true do |form| %>
       <%= form.hidden_field :post_id, value: @post.id %>
 
       <div class='form-group'>
-        <%= form.label :author %>
+        <%= form.label :author, class: 'form-label' %>
         <%= form.text_field :author, class: 'form-control', required: true, 
           style: 'background-color: #000; color: white; border: solid 1px #333', autocomplete: "off" %>
       </div>
 
       <div class='form-group'>
-        <%= form.label :body %>
+        <%= form.label :body, class: 'form-label' %>
         <%= form.text_area :body, class: 'form-control', required: true, 
           style: 'background-color: #000; color: white; border: solid 1px #333', autocomplete: "off" %>
       </div>
@@ -62,7 +61,6 @@
 
       <hr class="bg-dark">
 
-      <%# ATENÇÃO: Sempre que usarmos \n (como na linha abaixo), precisamos usar áspas duplas %>
       <%= sanitize(comment.body.gsub("\n", '<br>')).html_safe %>
     </div>
   <% end %>
